@@ -1,11 +1,26 @@
 import Koa from 'koa';
+import route from 'koa-route';
 const app = new Koa();
+
 const PORT = 3000;
 
-app.use(async function(ctx){
-  ctx.body = 'Hello World';
+app.use(async (ctx, next) => {
+  ctx.body = 'a';
+  next();
 });
 
-console.log(`running: ${PORT}`); 
+app.use(async (ctx, next) => {
+  ctx.body += 'b';
+
+  next();
+});
+
+app.use(async (ctx, next) => {
+  ctx.body += ` - ${Date.now()}`;
+
+  next();
+});
 
 app.listen(PORT);
+
+console.log(`running: ${PORT}`);
