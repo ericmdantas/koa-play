@@ -21,6 +21,13 @@ app.use(async (ctx, next) => {
   next();
 });
 
+app.use(async (ctx, next) => {
+  let _old = ctx.body;
+  ctx.body = {msg: `${Date.now()}`};
+
+  next();
+});
+
 app.listen(PORT);
 
 console.log(`running: ${PORT}`);
