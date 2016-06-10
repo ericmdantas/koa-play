@@ -6,11 +6,20 @@
   "scripts": {
     "start": "babel-node index.js"
   },
-  "author": "",
+  "author": "Eric",
   "license": "ISC",
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0"
+    ]
+  },
   "dependencies": {
-    "babel": "^5.8.23",
+    "babel-cli": "^6.9.0",
+    "babel-core": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.5.0",
     "koa": "^2.0.0-alpha.1",
-    "koa-route": "^2.4.2"
+    "koa-router": "^5.4.0"
   }
 }

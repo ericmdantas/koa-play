@@ -1,32 +1,14 @@
-import Koa from 'koa';
-import route from 'koa-route';
+const Koa = require('koa');
+const router = require('koa-router')();
 const app = new Koa();
 
 const PORT = 3000;
 
-app.use(async (ctx, next) => {
-  ctx.body = 'a';
-  next();
-});
+app.use(router.routes())
 
-app.use(async (ctx, next) => {
-  ctx.body += 'b';
-
-  next();
-});
-
-app.use(async (ctx, next) => {
-  ctx.body += ` - ${Date.now()}`;
-
-  next();
-});
-
-app.use(async (ctx, next) => {
-  let _old = ctx.body;
-  ctx.body = {msg: `${Date.now()}`};
-
-  next();
-});
+router.get('/', function *() {
+    this.body = "wtf";
+  });
 
 app.listen(PORT);
 
