@@ -8,7 +8,7 @@ const app = new Koa();
 const PORT = 3000;
 
 app.use(router.routes())
-app.use(serve('client/dev'))
+app.use(serve(process.cwd() + '/client/dev'))
 
 router
   .get('/wtf', function *() {
@@ -16,8 +16,8 @@ router
   });
 
 const opts = {
-  key: fs.readFileSync(__dirname + '/cert/server.key'),
-  cert: fs.readFileSync(__dirname + '/cert/server.crt')
+  key: fs.readFileSync(process.cwd() + '/cert/server.key'),
+  cert: fs.readFileSync(process.cwd() + '/cert/server.crt')
 }
 
 https.createServer(opts, app.callback()).listen(PORT);
